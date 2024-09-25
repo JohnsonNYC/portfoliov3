@@ -77,7 +77,7 @@ const Projects = () => {
                   whileHover={{ scale: 1.3 }} // Zoom the image in on hover
                   transition={{ type: 'tween', duration: 0.3 }}
                   >
-                  <Image src={projects[title].img} alt={title} layout='fill' objectFit='cover'/>
+                  <Image src={projects[title].img} alt={title} fill style={{ objectFit: 'cover' }}/>
                 </ImageContainer>
               </Card>
             </ImageWrapper>

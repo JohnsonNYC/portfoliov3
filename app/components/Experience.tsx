@@ -20,11 +20,10 @@ const Experience = () => {
           <Card whileHover={{ scale: 0.95 }} transition={{ type: 'tween', stiffness: 200 }}>
             <ImageContainer  whileHover={{ scale: 1.3 }} transition={{ type: 'tween', duration: 0.3 }}> 
               <Image
+                fill
                 src={SombleBW}
                 alt="Somble"
-                layout='fill'
-                objectFit='cover'
-                // onClick={() => openModal("Somble")}
+                style={{ objectFit: 'cover' }}
               />
             </ImageContainer>
           </Card>
@@ -38,11 +37,10 @@ const Experience = () => {
           <Card whileHover={{ scale: 0.95 }} transition={{ type: 'tween', stiffness: 200 }}>
             <ImageContainer whileHover={{ scale: 1.3 }} transition={{ type: 'tween', duration: 0.3 }}>
               <Image
+                fill
                 src={SpecPic}
                 alt="SPEC"
-                layout='fill'
-                objectFit='cover'
-                // onClick={() => openModal("Somble")}
+                style={{ objectFit: 'cover' }} 
               />
             </ImageContainer>
           </Card>
@@ -57,11 +55,10 @@ const Experience = () => {
           <Card whileHover={{ scale: 0.95 }} transition={{ type: 'tween', stiffness: 200 }}>
             <ImageContainer whileHover={{ scale: 1.3 }} transition={{ type: 'tween', duration: 0.3 }}>
               <Image
+                fill
                 src={InfosysBW}
                 alt="Infosys"
-                layout='fill'
-                objectFit='cover'
-                // onClick={() => openModal("Somble")}
+                style={{ objectFit: 'cover' }} 
               />
             </ImageContainer>
           </Card>
