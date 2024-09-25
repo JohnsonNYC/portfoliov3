@@ -1,6 +1,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --drab: #2B310A;
+  --dark-moss: #4B5320;
+  --reseda:#6A7337;
+  --moss: #929A68;
+  --french-gray: #AEB3B8;
+  --brunswick: #344E41;
+  --hunter: #3A5A40;
+  --fern:#588157;
+  --sage: #A3B18A;
+  --timberwolf: #DAD7CD;
 }
 
 @media (prefers-color-scheme: dark) {
