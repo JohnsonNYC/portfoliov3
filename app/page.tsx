@@ -73,6 +73,11 @@ const BackgroundContainer = styled(motion.div)`
     position: relative; 
     z-index: 1;
   }
+
+  @media screen and (max-width: 400px){
+    background-size: contain;
+    background-position: center top;
+  }
 `;
 
 const BackgroundOverlay = styled(motion.div)`
