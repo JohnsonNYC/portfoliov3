@@ -10,7 +10,6 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({isOpen, onClose, children, wrapperId}) => {
-  if(!isOpen) return null; 
 
   useEffect(() => {
     const handleEscapeKey = (e: KeyboardEvent) => {
@@ -33,6 +32,8 @@ const Modal: React.FC<ModalProps> = ({isOpen, onClose, children, wrapperId}) => 
       onClose();
     }
   };
+
+  if(!isOpen) return null; 
 
   return ( 
   <ReactPortal wrapperId={wrapperId}>
