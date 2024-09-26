@@ -44,11 +44,8 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 20px;
+  padding: 3vh 0;
   color: white;
-
-  padding-top: 50px;
-  padding-bottom: 50px;
 
   @media screen and (min-width: 1025px) {
     padding: 10rem;
@@ -57,7 +54,9 @@ const Container = styled.section`
 
 const Banner = styled.div`
   & > div {
-    font-size: 80px;
+    font-family: 'Bebas Neueu', sans-serif; 
+    font-weight: 600;
+    font-size: clamp(2rem, 10vw + 1rem, 4rem);
   }
 `;
 

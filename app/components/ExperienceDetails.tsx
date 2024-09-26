@@ -55,13 +55,23 @@ const Container = styled.div`
   margin: 0; 
   color: white;
   font-family: 'Bebas Neueu', sans-serif;
-  
+
   h3 { 
     margin-bottom: 1vh;
+    font-size: clamp(0.8rem, 1vw + 1, 1rem);
+
+    @media screen and (max-width: 400px){
+      font-weight: 400;
+      margin-top: 10px;
+    }
   }
 
   h2 { 
   margin-top: 5vh
+  }
+
+  h1 { 
+    font-size: clamp(1rem, 1vw + 1rem, 2rem);
   }
 
   ul {

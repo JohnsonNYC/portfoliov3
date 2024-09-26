@@ -23,7 +23,7 @@ const Header = () => {
           <div>My Portfolio</div>
           <NavigationLinks isMobile={isMobile} setShowDropdown={setShowDropdown} handleScroll={scrollToComponent}/>
         </Container>
-        <MobileDropdownMenu showDropdown={showDropdown} handleScroll={scrollToComponent}/>
+        <MobileDropdownMenu showDropdown={showDropdown} setShowDropdown={setShowDropdown} handleScroll={scrollToComponent}/>
       </Wrapper>
     </motion.header>
   )
@@ -45,33 +45,45 @@ const NavigationLinks = ({isMobile, setShowDropdown, handleScroll}:NavigationLin
 
 interface MobileDropdownMenuProps  {
   showDropdown: boolean; 
+  setShowDropdown: (value: boolean | ((prevState:boolean) => boolean)) => void;
   handleScroll: (id:string) => void; 
 }
 
-const MobileDropdownMenu = ({showDropdown, handleScroll}: MobileDropdownMenuProps) => {
+const MobileDropdownMenu = ({showDropdown, setShowDropdown, handleScroll}: MobileDropdownMenuProps) => {
   return (
     <motion.div initial={{height: 0}} animate={{height: showDropdown? 'auto': '0'}} transition={{duration: 0.4, ease: "easeInOut"}} style={{overflow: 'hidden'}}>
       <DropdownContainer>
-        <Links handleScroll={handleScroll}/>
+        <Links handleScroll={handleScroll} setShowDropdown={setShowDropdown}/>
       </DropdownContainer>
     </motion.div>
       )
 }
 interface LinksProp {
   handleScroll: (id: string, offset?:number) => void;
+  setShowDropdown?: (value: boolean | ((prevState:boolean) => boolean)) => void;
 }
 
-const Links = ({handleScroll}: LinksProp) => {
+const Links = ({handleScroll, setShowDropdown}: LinksProp) => {
   const hoverStyle = {scale: 1.4, color: "var(--sage)"};
+  const isMobile: boolean = useMediaPredicate("(max-width: 450px)");
+
+  const handleClick = (id: string, offset: number): void => {
+    handleScroll(id, offset);
+
+    setTimeout(() => {
+      if(isMobile && setShowDropdown)setShowDropdown(false);
+    }, 500)
+  }
+
   return (
     <>
-        <MotionDiv whileHover={hoverStyle} onClick={() => handleScroll('experience', 51)}>
+        <MotionDiv whileHover={hoverStyle} onClick={() => handleClick('experience', 51)}>
           Work
         </MotionDiv>
-        <MotionDiv whileHover={hoverStyle} onClick={() => handleScroll('contact', 51)}>
+        <MotionDiv whileHover={hoverStyle} onClick={() => handleClick('contact', 51)}>
           Contact
         </MotionDiv>
-        <MotionDiv whileHover={hoverStyle} onClick={() => handleScroll('about', 51)}>
+        <MotionDiv whileHover={hoverStyle} onClick={() => handleClick('about', 51)}>
           About
         </MotionDiv>
         <MotionLink whileHover={hoverStyle} target="_blank" href={"/Resume.pdf"} rel="noopener noreferrer">

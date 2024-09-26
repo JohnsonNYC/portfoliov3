@@ -59,6 +59,10 @@ const Overlay = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 1000;
+
+  @media screen and (max-width: 400px){
+    align-items: end;
+  }
 `
 
 const ModalContainer = styled.div`
@@ -67,6 +71,12 @@ const ModalContainer = styled.div`
   border-radius: 8px;
   position: relative;
   width: 70vw; 
+  max-height: 78vh; 
+  overflow: auto;
+
+  @media screen and (max-width: 400px){
+    width: 100vw;
+  }
 `
 
 const CloseButton = styled.div`

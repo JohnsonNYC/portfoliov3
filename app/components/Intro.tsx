@@ -65,17 +65,17 @@ const LeftContainer = styled(motion.div)`
   & > div { 
     font-family: 'Bebas Neue', sans-serif;
     font-weight: 600; 
-    font-size: 5rem;
+    font-size: clamp(1rem, 12vw + 1rem, 5rem);
     text-align: center; 
 
     &:first-of-type {
-      font-size: 3rem;
       color: var(--sage);
+      font-size: clamp(0.5rem, 3vw + 1rem, 3rem)
     }
       
     &:nth-of-type(2)::after { 
       content: " &";
-      font-size: 3rem;
+      font-size: clamp(0.5rem , 3vw + 1rem, 3rem );
       color: var(--sage);
     }
   }
@@ -88,9 +88,9 @@ const RightContainer = styled(motion.div)`
   font-family: 'Bebas Neue', sans-serif;
   padding: 0 0.5rem;
 
-  font-size: 1.5rem;
+  font-size: clamp(0.5rem, 1vw + 1rem, 1.5rem);
   font-weight: 600;
-  
+
   & > button {
     margin-top: 20px;
   }

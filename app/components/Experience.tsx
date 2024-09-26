@@ -79,20 +79,20 @@ const Experience = () => {
         return (
           <ImageWrapper key={index}>
             <TextContainer>
-            <h1>&quot;{key}&quot;</h1>
-            <h3>{SelectionStore[key].position}</h3>
-          </TextContainer>
+              <h1>&quot;{key}&quot;</h1>
+              <h3>{SelectionStore[key].position}</h3>
+            </TextContainer>
 
-          <Card whileHover={{ scale: 0.95 }} transition={{ type: 'tween', stiffness: 200 }} onClick={() => setSelectedExperience(SelectionStore[key])}>
-            <ImageContainer  whileHover={{ scale: 1.3 }} transition={{ type: 'tween', duration: 0.3 }}> 
-              <Image
-                fill
-                src={SelectionStore[key].image}
-                alt={key}
-                style={{ objectFit: 'cover' }}
-              />
-            </ImageContainer>
-          </Card>
+            <Card whileHover={{ scale: 0.95 }} transition={{ type: 'tween', stiffness: 200 }} onClick={() => setSelectedExperience(SelectionStore[key])}>
+              <ImageContainer  whileHover={{ scale: 1.3 }} transition={{ type: 'tween', duration: 0.3 }}> 
+                <Image
+                  fill
+                  src={SelectionStore[key].image}
+                  alt={key}
+                  style={{ objectFit: 'cover' }}
+                />
+              </ImageContainer>
+            </Card>
           </ImageWrapper>
         )
       })}
@@ -112,11 +112,15 @@ export default Experience;
 
 
 const Container = styled.div`
-  height: 100vh; 
+  min-height: 100vh; 
+  padding-top: 5vh;
 `
 
 const Title = styled.h1`
+  font-size: clamp(1rem, 3vw + 1rem, 2rem);
   font-family: 'Bebas Neue', sans-serif; 
+  color: var(--brunswick);
+  text-align: center;
 `
 
 const Card = styled(motion.div)`
@@ -134,7 +138,9 @@ const ImageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 1rem; 
+  margin-top: 1rem;
+  gap: 10px;
+  cursor: pointer; 
 `;
 
 const TextContainer = styled.div`
@@ -144,7 +150,7 @@ const TextContainer = styled.div`
 
   & > h1 { 
     font-family: 'Bebas Neue', sans-serif; 
-    font-size: 4rem;
+    font-size: clamp(1rem, 5vw + 1rem, 4rem)
   }
 
   & > h3 { 

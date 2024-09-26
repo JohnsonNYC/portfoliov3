@@ -92,10 +92,15 @@ export default Projects;
 
 const Container = styled.div`
   min-height: 100vh; 
+  padding-top: 5vh;
 `
 
 const Title = styled.h1`
-  font-family: 'Bebas Neue', sans-serif; 
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1rem, 3vw + 1rem, 2rem);
+  color: var(--sage);
+  margin-top: 10px;
+  text-align: center; 
 `
 
 const Card = styled(motion.div)`
@@ -114,6 +119,7 @@ const ImageWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 1rem; 
+  cursor:pointer; 
 `;
 
 const TextContainer = styled.div`
@@ -124,11 +130,12 @@ const TextContainer = styled.div`
 
   & > h1 { 
     font-family: 'Bebas Neue', sans-serif; 
-    font-size: 3rem;
+    font-size: clamp(1rem, 5vw + 1rem, 3.5rem)
   }
 
   & > svg { 
     stroke: var(--sage);
+    cursor:pointer; 
   }
 `
 

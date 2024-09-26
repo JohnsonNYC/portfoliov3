@@ -38,18 +38,18 @@ export default function Home() {
   return (
     <>
       <Header />
-      <MainContainer >
         <BackgroundContainer>
           <BackgroundOverlay animate={controls} initial={{ opacity: 0.5 }}/>
-          <Intro passedRef={introRef}/>
-          <div id='about' ref={aboutMeRef} style={{ minHeight:'100vh'}}>
-            {loadAboutMe && <AboutMe/>}
-          </div>
-          <Experience />
-          <Projects />
-          <LetsConnect passedRef={letsConnectRef}/>
+            <MainContainer >
+              <Intro passedRef={introRef}/>
+              <div id='about' ref={aboutMeRef} style={{ minHeight:'100vh'}}>
+                {loadAboutMe && <AboutMe/>}
+              </div>
+              <Experience />
+              <Projects />
+              <LetsConnect passedRef={letsConnectRef}/>
+            </MainContainer>
         </BackgroundContainer>
-      </MainContainer>
       <Footer />
     </>
   );
