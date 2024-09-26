@@ -33,6 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <div id='modal-root'></div>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>

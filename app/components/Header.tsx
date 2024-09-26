@@ -58,20 +58,20 @@ const MobileDropdownMenu = ({showDropdown, handleScroll}: MobileDropdownMenuProp
       )
 }
 interface LinksProp {
-  handleScroll: (id: string) => void;
+  handleScroll: (id: string, offset?:number) => void;
 }
 
 const Links = ({handleScroll}: LinksProp) => {
   const hoverStyle = {scale: 1.4, color: "var(--sage)"};
   return (
     <>
-        <MotionDiv whileHover={hoverStyle} onClick={() => handleScroll('experience')}>
+        <MotionDiv whileHover={hoverStyle} onClick={() => handleScroll('experience', 51)}>
           Work
         </MotionDiv>
-        <MotionDiv whileHover={hoverStyle} onClick={() => handleScroll('contact')}>
+        <MotionDiv whileHover={hoverStyle} onClick={() => handleScroll('contact', 51)}>
           Contact
         </MotionDiv>
-        <MotionDiv whileHover={hoverStyle} onClick={() => handleScroll('about')}>
+        <MotionDiv whileHover={hoverStyle} onClick={() => handleScroll('about', 51)}>
           About
         </MotionDiv>
         <MotionLink whileHover={hoverStyle} target="_blank" href={"/Resume.pdf"} rel="noopener noreferrer">
@@ -86,7 +86,7 @@ export default Header;
 const Container = styled.div`
   display: flex; 
   justify-content: space-between;
-  border-bottom: 1px solid var(--moss); 
+  border-bottom: 1px solid var(--brunswick); 
 
   & > div { 
     width: 50%; 
@@ -112,7 +112,7 @@ const NavContainer = styled.div`
   }
 
   svg { 
-    stroke: var(--sage);
+    stroke: var(--brunswick);
   }
   @media screen and (max-width: 450px){
     justify-content: end; 

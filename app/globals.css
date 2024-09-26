@@ -6,11 +6,16 @@
   --reseda:#6A7337;
   --moss: #929A68;
   --french-gray: #AEB3B8;
-  --brunswick: #344E41;
+  --brunswick: #235347;
   --hunter: #3A5A40;
   --fern:#588157;
   --sage: #A3B18A;
   --timberwolf: #DAD7CD;
+  --dark-green: #051f20;
+  --phthalo-green: #0b2b26;
+  --medium-jungle-green: #163832; 
+  --dark-sea-green: #8eb69b;
+  --chinese-white: #daf1de;
 }
 
 @media (prefers-color-scheme: dark) {
