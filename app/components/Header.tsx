@@ -3,7 +3,7 @@ import React,{useState, useEffect} from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import {useMediaPredicate} from "../utils/hooks"
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { scrollToComponent } from "../utils/service";
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
       <Wrapper>
         <Container>
           <div>My Portfolio</div>
-          <NavigationLinks isMobile={isMobile} setShowDropdown={setShowDropdown} handleScroll={scrollToComponent}/>
+          <NavigationLinks isMobile={isMobile} showDropdown={showDropdown} setShowDropdown={setShowDropdown} handleScroll={scrollToComponent}/>
         </Container>
         <MobileDropdownMenu showDropdown={showDropdown} setShowDropdown={setShowDropdown} handleScroll={scrollToComponent}/>
       </Wrapper>
@@ -31,17 +31,39 @@ const Header = () => {
 
 interface NavigationLinksProps {
   isMobile: boolean;
+  showDropdown: boolean;
   setShowDropdown: (value: boolean | ((prevState: boolean) => boolean)) => void;
   handleScroll: (id:string) => void; 
 }
 
-const NavigationLinks = ({isMobile, setShowDropdown, handleScroll}:NavigationLinksProps) => {
+const NavigationLinks = ({isMobile, showDropdown,setShowDropdown, handleScroll}:NavigationLinksProps) => {
   return (
     <NavContainer>
-      {isMobile? <Menu onClick={() => setShowDropdown((prevState: boolean) =>  !prevState)}/>: <Links handleScroll={handleScroll} />}
+      {isMobile ? (
+        <MenuIcon showDropdown={showDropdown} onClick={() => setShowDropdown(prevState => !prevState)} />
+      ) : (
+        <Links handleScroll={handleScroll}/>
+      )}
     </NavContainer>
   )
 }
+
+// Menu Icon component
+const MenuIcon = ({ showDropdown, onClick }: { showDropdown: boolean; onClick: () => void }) => {
+  return (
+    <motion.div onClick={onClick}>
+      {showDropdown ? (
+        <motion.div key="x-icon" initial={{ rotate: 90 }} animate={{ rotate: 0 }}>
+          <X />
+        </motion.div>
+      ) : ( 
+        <motion.div key="menu-icon" initial={{ rotate: -90 }} animate={{ rotate: 0 }}>
+          <Menu />
+        </motion.div>
+      )}
+    </motion.div>
+  );
+};
 
 interface MobileDropdownMenuProps  {
   showDropdown: boolean; 
