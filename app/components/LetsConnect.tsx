@@ -41,6 +41,7 @@ const LetsConnect: React.FC<LetsConnectProps> = ({passedRef}) => {
 };
 
 const Container = styled.section`
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

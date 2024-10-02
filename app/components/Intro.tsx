@@ -52,7 +52,7 @@ return(
 export default Intro;
 
 const Container = styled.div`
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh);
   display: flex;
   align-items: center; 
   justify-content: space-between; 
@@ -88,7 +88,7 @@ const RightContainer = styled(motion.div)`
   font-family: 'Bebas Neue', sans-serif;
   padding: 0 0.5rem;
 
-  font-size: clamp(0.5rem, 1vw + 1rem, 1.5rem);
+  font-size: clamp(0.5rem, 1vw + 1rem, 1rem);
   font-weight: 600;
 
   & > button {

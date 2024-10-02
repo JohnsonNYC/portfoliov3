@@ -1,31 +1,50 @@
 
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useRef} from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import {useMediaPredicate} from "../utils/hooks"
 import { Menu, X } from "lucide-react";
 import { scrollToComponent } from "../utils/service";
 
+const hoverStyle = {scale: 1.4, color: "var(--sage)"};
+
 const Header = () => {
   const isMobile: boolean = useMediaPredicate("(max-width: 450px)");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [showHeader, setShowHeader] = useState<boolean>(true);
+  
+  const prevScrollPosref = useRef(0); 
+
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY;
+    const isScrollingUp = prevScrollPosref.current > currentScrollPos; 
+
+    setShowHeader(isScrollingUp || currentScrollPos <= 0);
+    prevScrollPosref.current = currentScrollPos; 
+  }
 
   useEffect(() => {
     if(!isMobile){
       setShowDropdown(false);
     }
   }, [isMobile])
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  },[prevScrollPosref])
   
   return (
-    <motion.header initial={{y:'-100%', opacity: 0}} animate={{y:0, opacity: 1}} transition={{type:'spring', stiffness: 100, damping: 20, duration: 1, delay: 1.6}} style={{height: '60px'}}>
-      <Wrapper>
+    <HeaderContainer initial={{y:'-100%', opacity: 0}} animate={{y: showHeader? 0: '-100%', opacity: showHeader? 1: 0}} transition={{type:'spring', stiffness: 100, damping: 20, duration: 1}} >
         <Container>
-          <div>My Portfolio</div>
+          <MotionDiv whileHover={{color: "var(--sage)"}}>The Johnson Kow</MotionDiv>
           <NavigationLinks isMobile={isMobile} showDropdown={showDropdown} setShowDropdown={setShowDropdown} handleScroll={scrollToComponent}/>
         </Container>
         <MobileDropdownMenu showDropdown={showDropdown} setShowDropdown={setShowDropdown} handleScroll={scrollToComponent}/>
-      </Wrapper>
-    </motion.header>
+    </HeaderContainer>
   )
 }
 
@@ -73,7 +92,7 @@ interface MobileDropdownMenuProps  {
 
 const MobileDropdownMenu = ({showDropdown, setShowDropdown, handleScroll}: MobileDropdownMenuProps) => {
   return (
-    <motion.div initial={{height: 0}} animate={{height: showDropdown? 'auto': '0'}} transition={{duration: 0.4, ease: "easeInOut"}} style={{overflow: 'hidden'}}>
+    <motion.div initial={{height: 0}} animate={{height: showDropdown? 'auto': '0'}} transition={{duration: 0.2, ease: "easeInOut"}} style={{overflow: 'hidden'}}>
       <DropdownContainer>
         <Links handleScroll={handleScroll} setShowDropdown={setShowDropdown}/>
       </DropdownContainer>
@@ -86,7 +105,7 @@ interface LinksProp {
 }
 
 const Links = ({handleScroll, setShowDropdown}: LinksProp) => {
-  const hoverStyle = {scale: 1.4, color: "var(--sage)"};
+ 
   const isMobile: boolean = useMediaPredicate("(max-width: 450px)");
 
   const handleClick = (id: string, offset: number): void => {
@@ -117,6 +136,15 @@ const Links = ({handleScroll, setShowDropdown}: LinksProp) => {
 
 export default Header;
 
+const HeaderContainer = styled(motion.header)`
+  width: 100%; 
+  height: auto; 
+  position: fixed; 
+  top: 0; 
+
+  background:#0a0a0a;
+  z-index: 1000;
+`
 const Container = styled.div`
   display: flex; 
   justify-content: space-between;
@@ -126,15 +154,6 @@ const Container = styled.div`
     width: 50%; 
     padding: 1rem; 
   }
-`
-const Wrapper = styled.div`
-  width: 100%; 
-  height: auto; 
-  position: fixed; 
-  top: 0; 
-
-  background:#0a0a0a;
-  z-index: 1000;
 `
 const NavContainer = styled.div`
   display: flex; 
