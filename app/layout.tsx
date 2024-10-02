@@ -17,6 +17,22 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Johnson Kow Portfolio",
   description: "A website dedicated to Johnson Kow's Employment History and Achievements",
+  openGraph: {
+    title: 'Johnson Kow Portfolio',
+    description: `Johnson Kow's Software Engineering Frontend Portfolio`,
+    url: 'https://thejohnsonkow.vercel.app/',
+    siteName: 'The Johnson Kow',
+    images: [
+      {
+        url: 'https://thejohnsonkow.vercel.app/PortfolioThumbnail.png',
+        width: 800,
+        height: 600,
+        alt: 'Og Image Alt',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
