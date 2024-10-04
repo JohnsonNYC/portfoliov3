@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react'
 import ReactPortal from './Portal'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import { useMediaPredicate } from '../utils/hooks';
 
 interface ModalProps { 
   isOpen: boolean; 
@@ -10,6 +12,7 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({isOpen, onClose, children, wrapperId}) => {
+    const isMobile: boolean = useMediaPredicate("(max-width: 450px)");
 
   useEffect(() => {
     const handleEscapeKey = (e: KeyboardEvent) => {
@@ -38,7 +41,7 @@ const Modal: React.FC<ModalProps> = ({isOpen, onClose, children, wrapperId}) => 
   return ( 
   <ReactPortal wrapperId={wrapperId}>
     <Overlay onClick={handleOverlayClick}>
-      <ModalContainer>
+      <ModalContainer initial={isMobile? {y: '100%'}:{x: '100%'}} animate={isMobile? {y: '0%'}:{x: '0%'}} transition={{ease: 'linear'}}>
         <CloseButton onClick={onClose} >&times;</CloseButton>
         {children}
       </ModalContainer>
@@ -65,17 +68,24 @@ const Overlay = styled.div`
   }
 `
 
-const ModalContainer = styled.div`
+const ModalContainer = styled(motion.div)`
   background: var(--phthalo-green);
   padding: 20px;
   border-radius: 8px;
-  position: relative;
   width: 70vw; 
-  max-height: 78vh; 
   overflow: auto;
+
+  max-height: 95vh;
+  position: fixed;
+  top: 0; 
+  bottom: 0; 
+  right: 0; 
+  margin: auto 0;
 
   @media screen and (max-width: 400px){
     width: 100vw;
+    max-height: 90vh;
+    margin: auto 0 0 0 ;
   }
 `
 
