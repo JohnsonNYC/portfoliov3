@@ -105,7 +105,7 @@ interface LinksProp {
 }
 
 const Links = ({handleScroll, setShowDropdown}: LinksProp) => {
- 
+
   const isMobile: boolean = useMediaPredicate("(max-width: 450px)");
 
   const handleClick = (id: string, offset: number): void => {
@@ -118,13 +118,13 @@ const Links = ({handleScroll, setShowDropdown}: LinksProp) => {
 
   return (
     <>
-        <MotionDiv whileHover={hoverStyle} onClick={() => handleClick('experience', 51)}>
+        <MotionDiv whileHover={hoverStyle} onClick={() => handleClick('experience', 0)}>
           Work
         </MotionDiv>
-        <MotionDiv whileHover={hoverStyle} onClick={() => handleClick('contact', 51)}>
+        <MotionDiv whileHover={hoverStyle} onClick={() => handleClick('contact', 0 )}>
           Contact
         </MotionDiv>
-        <MotionDiv whileHover={hoverStyle} onClick={() => handleClick('about', 51)}>
+        <MotionDiv whileHover={hoverStyle} onClick={() => handleClick('about', 0)}>
           About
         </MotionDiv>
         <MotionLink whileHover={hoverStyle} target="_blank" href={"/Resume.pdf"} rel="noopener noreferrer">
