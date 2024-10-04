@@ -55,10 +55,14 @@ const Container = styled.div`
   margin: 0; 
   color: white;
   font-family: 'Bebas Neueu', sans-serif;
+  height: 100%; 
+
+  display: flex; 
+  flex-direction: column;
 
   h3 { 
-    margin-bottom: 1vh;
     font-size: clamp(0.8rem, 1vw + 1, 1rem);
+    margin-bottom: 1vh; 
 
     @media screen and (max-width: 400px){
       font-weight: 400;
@@ -66,30 +70,43 @@ const Container = styled.div`
     }
   }
 
-  h2 { 
-  margin-top: 5vh
+  h2 {
+    margin-bottom: 3vh
   }
 
   h1 { 
     font-size: clamp(1rem, 1vw + 1rem, 2rem);
+    margin-bottom: 1vh; 
   }
 
   ul {
     display: flex; 
     flex-wrap: wrap;
+    flex: 1 1 200px;
+    max-height: 42%;
+    overflow: auto;
+    margin-left: 5px;
   }
 `
 const ExperienceItem = styled(motion.li)`
   list-style-type: none; 
-  padding: 1rem; 
+  padding: 0 0.5rem; 
   margin: 0.5rem 0;
-  border: 1px solid white; 
   border-radius: 10px;
   width: fit-content;
+  border: 1px solid white;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+
+  @media screen and (max-width: 400px){
+    border: none; 
+  }
 `;
 
 const ImageContainer = styled(motion.div)`
   position: relative; 
   width: 100%;
   height: 240px;
+  margin-bottom: 2vh;
 `;

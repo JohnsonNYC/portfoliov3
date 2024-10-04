@@ -52,16 +52,16 @@ return(
 export default Intro;
 
 const Container = styled.div`
-  min-height: calc(100vh);
+  min-height: 100vh;
   display: flex;
   align-items: center; 
   justify-content: space-between; 
-  flex-wrap: wrap; 
+  flex-wrap: wrap;  
 `
   
 const LeftContainer = styled(motion.div)`
-  flex: 1 1 500px;
-  
+  flex: 1 4 500px;
+
   & > div { 
     font-family: 'Bebas Neue', sans-serif;
     font-weight: 600; 
@@ -81,7 +81,7 @@ const LeftContainer = styled(motion.div)`
   }
 `
 const RightContainer = styled(motion.div)`
-  flex: 1 1 500px; 
+  flex: 2 1 500px; 
   display: flex; 
   flex-direction: column; 
 

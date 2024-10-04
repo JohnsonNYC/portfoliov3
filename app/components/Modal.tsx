@@ -73,14 +73,11 @@ const ModalContainer = styled(motion.div)`
   padding: 20px;
   border-radius: 8px;
   width: 70vw; 
-  overflow: auto;
 
-  max-height: 95vh;
-  position: fixed;
-  top: 0; 
-  bottom: 0; 
-  right: 0; 
-  margin: auto 0;
+  min-height: 88vh;
+  height: 88vh;
+  position: relative;
+  margin: auto 0 auto auto;
 
   @media screen and (max-width: 400px){
     width: 100vw;
@@ -91,10 +88,11 @@ const ModalContainer = styled(motion.div)`
 
 const CloseButton = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 1rem;
+  right: 1rem;
   border: none;
   background: transparent;
-  font-size: 20px;
+  font-size: 40px;
   cursor: pointer;
+  z-index: 100; 
 `
