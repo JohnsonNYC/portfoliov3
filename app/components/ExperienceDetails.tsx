@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 import styled from 'styled-components';
-
 
 type SelectionStoreTypeProp = {
   [key: string]: {
@@ -16,13 +15,18 @@ type SelectionStoreTypeProp = {
   };
 };
 
-const ExperienceDetails: React.FC<SelectionStoreTypeProp> = ({jobDetails}) => {
-  const {company, position, description, image, colorImage, experience} = jobDetails || {}; 
+const ExperienceDetails: React.FC<SelectionStoreTypeProp> = ({
+  jobDetails,
+}) => {
+  const { company, position, description, image, colorImage, experience } =
+    jobDetails || {};
   return (
     <Container>
-      <h1>{company} - {position.toLocaleLowerCase()}</h1>
+      <h1>
+        {company} - {position.toLocaleLowerCase()}
+      </h1>
       <h3>{description}</h3>
-      <ImageContainer> 
+      <ImageContainer>
         <Image
           fill
           src={colorImage || image}
@@ -35,77 +39,82 @@ const ExperienceDetails: React.FC<SelectionStoreTypeProp> = ({jobDetails}) => {
       <ul>
         {experience.map((description, index) => {
           return (
-            <ExperienceItem 
-              key={index} 
-              whileHover={{x:10 ,boxShadow:"0px 4px 10px rgba(0,0,0,1)", transition: {type:'spring', stiffnes:200}}}>
+            <ExperienceItem
+              key={index}
+              whileHover={{
+                x: 10,
+                boxShadow: '0px 4px 10px rgba(0,0,0,1)',
+                transition: { type: 'spring', stiffnes: 200 },
+              }}
+            >
               <div>{description}</div>
             </ExperienceItem>
-          )
+          );
         })}
       </ul>
-    </Container> 
-  )
-}
+    </Container>
+  );
+};
 
 export default ExperienceDetails;
 
 const Container = styled.div`
-  list-style-type: none; 
-  padding: 0; 
-  margin: 0; 
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
   color: white;
   font-family: 'Bebas Neueu', sans-serif;
-  height: 100%; 
+  height: 100%;
 
-  display: flex; 
+  display: flex;
   flex-direction: column;
 
-  h3 { 
+  h3 {
     font-size: clamp(0.8rem, 1vw + 1, 1rem);
-    margin-bottom: 1vh; 
+    margin-bottom: 1vh;
 
-    @media screen and (max-width: 400px){
+    @media screen and (max-width: 400px) {
       font-weight: 400;
       margin-top: 10px;
     }
   }
 
   h2 {
-    margin-bottom: 3vh
+    margin-bottom: 3vh;
   }
 
-  h1 { 
+  h1 {
     font-size: clamp(1rem, 1vw + 1rem, 2rem);
-    margin-bottom: 1vh; 
+    margin-bottom: 1vh;
   }
 
   ul {
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
     flex: 1 1 200px;
     max-height: 42%;
     overflow: auto;
     margin-left: 5px;
   }
-`
+`;
 const ExperienceItem = styled(motion.li)`
-  list-style-type: none; 
-  padding: 0 0.5rem; 
+  list-style-type: none;
+  padding: 0 0.5rem;
   margin: 0.5rem 0;
   border-radius: 10px;
   width: fit-content;
   border: 1px solid white;
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  @media screen and (max-width: 400px){
-    border: none; 
+  @media screen and (max-width: 400px) {
+    border: none;
   }
 `;
 
 const ImageContainer = styled(motion.div)`
-  position: relative; 
+  position: relative;
   width: 100%;
   height: 240px;
   margin-bottom: 2vh;
