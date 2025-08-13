@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 const tattoos = [
   { id: 1, src: '/images/tattoo1.jpg', alt: 'Tattoo 1' },
