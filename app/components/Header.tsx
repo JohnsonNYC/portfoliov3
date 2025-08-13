@@ -183,12 +183,12 @@ const Links = ({ handleScroll, setShowDropdown }: LinksProp) => {
       >
         About
       </MotionDiv>
-      <MotionDiv
+      {/* <MotionDiv
         whileHover={hoverStyle}
-        onClick={() => (window.location.href = '/extra')}
+        onClick={() => (window.location.href = '/tattoo')}
       >
-        More
-      </MotionDiv>
+        Tattoo
+      </MotionDiv> */}
       <MotionLink
         whileHover={hoverStyle}
         target="_blank"
